@@ -5,7 +5,6 @@ import CircleButton from '../CircleButton/CircleButton'
 import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
 import Context from '../Context';
-import { countNotesForFolder } from '../notes-helpers'
 
 export default class NoteListNav extends React.Component {
   static contextType = Context;

@@ -7,7 +7,6 @@ import NoteListMain from '../NoteListMain/NoteListMain'
 import NotePageMain from '../NotePageMain/NotePageMain'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
-import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
 import Context from '../Context'
 import config from '../config'
@@ -67,7 +66,6 @@ class App extends Component {
   }
 
   renderNavRoutes() {
-    const { notes, folders } = this.state
     return (
       <>
        {['/', '/folder/:folderId'].map(path =>
