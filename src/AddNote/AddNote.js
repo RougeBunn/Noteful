@@ -4,6 +4,7 @@ import Context from '../Context'
 import config from '../config'
 import './AddNote.css'
 import PropTypes from 'prop-types';
+
 export default class AddNote extends Component {
   static propTypes = {
     history: PropTypes.shape ({
@@ -22,10 +23,10 @@ export default class AddNote extends Component {
     const newNote = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
-      folder_id: e.target['note-folder-id'].value,
-      modified: new Date().toDateString(),
+      folderId: e.target['note-folder-id'].value,
+      modified: new Date(),
     }
-    fetch(`${config.API_ENDPOINT}/api/notes`, {
+    fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -39,7 +40,7 @@ export default class AddNote extends Component {
       })
       .then(note => {
         this.context.addNote(note)
-        this.props.history.push(`/folder/${note.folder_id}`)
+        this.props.history.push(`/folder/${note.folderId}`)
       })
       .catch(error => {
         console.error({ error })
@@ -56,7 +57,7 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' name='note-name' required />
+            <input type='text' id='note-name-input' name='note-name' required/>
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
