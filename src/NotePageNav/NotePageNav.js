@@ -4,8 +4,17 @@ import CircleButton from '../CircleButton/CircleButton'
 import Context from '../Context'
 import { findNote, findFolder } from '../notes-helpers'
 import './NotePageNav.css'
+import PropTypes from 'prop-types'
 
 export default class NotePageNav extends React.Component {
+  static propTypes = {
+    history: PropTypes.shape({
+      goBack: PropTypes.func.isRequired
+    }),
+    match: PropTypes.shape ({
+      push: PropTypes.func.isRequired
+    })
+  }
   static defaultProps = {
     history: {
       goBack: () => { }

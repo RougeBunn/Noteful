@@ -3,13 +3,20 @@ import Note from '../Note/Note'
 import './NotePageMain.css'
 import Context from '../Context'
 import { findNote } from '../notes-helpers'
+import PropTypes from 'prop-types'
 
 export default class NotePageMain extends React.Component {
+  static propTypes = {
+    match: PropTypes.shape ({
+      params: PropTypes.func.isRequired
+    })
+  }
   static defaultProps = {
     match: {
       params: {}
     }
   }
+
   static contextType = Context
 
   handleDeleteNote = noteId => {
@@ -38,8 +45,3 @@ export default class NotePageMain extends React.Component {
   }
 }
 
-NotePageMain.defaultProps = {
-  note: {
-    content: '',
-  }
-}
