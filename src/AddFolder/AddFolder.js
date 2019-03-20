@@ -3,8 +3,14 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import Context from '../Context'
 import config from '../config'
 import './AddFolder.css'
+import PropTypes from 'prop-types'
 
 export default class AddFolder extends Component {
+  static propTypes = {
+    history: PropTypes.shape ({
+      push: PropTypes.func.isRequired
+    })
+  }
   static defaultProps = {
     history: {
       push: () => { }
@@ -44,7 +50,7 @@ export default class AddFolder extends Component {
         <h2>Create a folder</h2>
         <NotefulForm onSubmit={this.handleSubmit}>
           <div className='field'>
-            <label htmlFor='folder-name-input'>
+            <label htmlFor='folder-name-input' required>
               Name
             </label>
             <input type='text' id='folder-name-input' name='folder-name' />
@@ -59,3 +65,4 @@ export default class AddFolder extends Component {
     )
   }
 }
+

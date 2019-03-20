@@ -3,8 +3,13 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import Context from '../Context'
 import config from '../config'
 import './AddNote.css'
-
+import PropTypes from 'prop-types';
 export default class AddNote extends Component {
+  static propTypes = {
+    history: PropTypes.shape ({
+      push: PropTypes.func.isRequired
+    })
+  }
   static defaultProps = {
     history: {
       push: () => { }
@@ -51,7 +56,7 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' name='note-name' />
+            <input type='text' id='note-name-input' name='note-name' required />
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
