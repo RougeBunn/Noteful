@@ -10,7 +10,7 @@ import AddNote from '../AddNote/AddNote'
 import './App.css'
 import Context from '../Context'
 import config from '../config'
-
+import ErrorBoundary from '../errorBoundary/errorBoundary'
 class App extends Component {
   state = {
     notes: [],
@@ -128,23 +128,25 @@ class App extends Component {
       deleteNote: this.handleDeleteNote,
     }
     return (
-      <Context.Provider value={value}>
-        <div className='App'>
-          <nav className='App__nav'>
-            {this.renderNavRoutes()}
-          </nav>
-          <header className='App__header'>
-            <h1>
-              <Link to='/'>Noteful</Link>
-              {' '}
-              <FontAwesomeIcon icon='check-double' />
-            </h1>
-          </header>
-          <main className='App__main'>
-            {this.renderMainRoutes()}
-          </main>
-        </div>
-      </Context.Provider>
+      <ErrorBoundary>
+        <Context.Provider value={value}>
+          <div className='App'>
+            <nav className='App__nav'>
+              {this.renderNavRoutes()}
+            </nav>
+            <header className='App__header'>
+              <h1>
+                <Link to='/'>Noteful</Link>
+                {' '}
+                <FontAwesomeIcon icon='check-double' />
+              </h1>
+            </header>
+            <main className='App__main'>
+              {this.renderMainRoutes()}
+            </main>
+          </div>
+        </Context.Provider>
+      </ErrorBoundary>
     )
   }
 }
